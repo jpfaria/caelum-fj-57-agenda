@@ -65,5 +65,9 @@ public class Aluno {
 	public void setNota(double nota) {
 		this.nota = nota;
 	}
+	
+	public String toString() {
+		return nome;
+	}
 
 }
