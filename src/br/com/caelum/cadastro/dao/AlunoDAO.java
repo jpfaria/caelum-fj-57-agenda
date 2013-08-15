@@ -47,14 +47,11 @@ public class AlunoDAO extends SQLiteOpenHelper {
 		values.put("telefone", aluno.getTelefone());
 		values.put("nota", aluno.getNota());
 
-		SQLiteDatabase db = getWritableDatabase();
-		db.insert(TABLE, null, values);
+		getWritableDatabase().insert(TABLE, null, values);
 	}
 	
 	public List<Aluno> getLista() {
-		SQLiteDatabase db = getReadableDatabase();
-		
-		Cursor cursor = db.query(TABLE, COLUMNS, null, null, null, null, null);
+		Cursor cursor = getReadableDatabase().query(TABLE, COLUMNS, null, null, null, null, null);
 		
 		List<Aluno> alunos = new ArrayList<Aluno>();
 		
@@ -75,6 +72,11 @@ public class AlunoDAO extends SQLiteOpenHelper {
 		
 		return alunos;
 		
+	}
+	
+	public void deleter(Aluno aluno) {
+		String[] args = { aluno.getId().toString() };
+		getWritableDatabase().delete(TABLE, "id=?", args);
 	}
 
 }
