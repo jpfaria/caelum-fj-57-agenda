@@ -1,0 +1,46 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/menu_principal_novo"
+        android:showAsAction="always"
+        android:icon="@drawable/ic_novo"
+        android:title="@string/menu_principal_novo"/>
+    
+    <item
+        android:id="@+id/menu_principal_mapa"
+        android:showAsAction="always"
+        android:icon="@drawable/ic_mapa"
+        android:title="@string/menu_principal_mapa"/>
+    
+    <item
+        android:id="@+id/menu_principal_opcoes"
+        android:showAsAction="always"
+        android:icon="@drawable/ic_opcoes"
+        android:title="@string/menu_principal_opcoes">
+        
+        <menu>
+            
+             <item
+		        android:id="@+id/menu_principal_enviar_alunos"
+		        android:showAsAction="always"
+		        android:icon="@drawable/ic_enviar"
+		        android:title="@string/menu_principal_enviar_alunos"/>
+             
+             <item
+		        android:id="@+id/menu_principal_receber_provas"
+		        android:showAsAction="always"
+		        android:icon="@drawable/ic_receber"
+		        android:title="@string/menu_principal_receber_provas"/>
+             
+             <item
+		        android:id="@+id/menu_principal_preferencias"
+		        android:showAsAction="always"
+		        android:icon="@drawable/ic_preferencias"
+		        android:title="@string/menu_principal_preferencias"/>
+             
+            
+        </menu>
+        
+    </item>
+
+</menu>
