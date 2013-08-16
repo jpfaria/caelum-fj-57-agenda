@@ -29,6 +29,7 @@ public class ListaAlunosActivity extends Activity {
 		
 		setContentView(R.layout.listagem_alunos);
 		carregaLista();
+		registerForContextMenu(this.listaAlunos);
 
 	}
 
@@ -101,7 +102,7 @@ public class ListaAlunosActivity extends Activity {
 		AlunoDAO alunoDAO = new AlunoDAO(this);
 
 		ArrayAdapter<Aluno> adapter = new ArrayAdapter<Aluno>(this,
-				android.R.layout.simple_list_item_multiple_choice,
+				android.R.layout.simple_list_item_1,
 				alunoDAO.getLista());
 		
 		this.listaAlunos = (ListView) findViewById(R.id.lista_alunos);
@@ -133,12 +134,12 @@ public class ListaAlunosActivity extends Activity {
 						alunoSelecionado = (Aluno) adapter
 								.getItemAtPosition(position);
 
-						return true; // cancela onItemClick
+						return false; 
 					}
 
 				});
 		
-		registerForContextMenu(this.listaAlunos);
+		
 		
 	}
 
