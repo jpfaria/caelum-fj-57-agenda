@@ -48,8 +48,10 @@ public class FormularioActivity extends Activity {
 				alunoDAO.close();
 				finish();
 				
+				/* nao precisa.. o metodo finish mata o form e mostra anterior
 				Intent intent = new Intent(FormularioActivity.this, ListaAlunosActivity.class);
 				startActivity(intent);
+				*/
 
 			}
 

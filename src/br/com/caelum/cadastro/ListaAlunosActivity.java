@@ -31,7 +31,13 @@ public class ListaAlunosActivity extends Activity {
 		setContentView(R.layout.listagem_alunos);
 		criaLista();
 		carregaLista();
-
+		
+	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		carregaLista();
 	}
 
 	private void criaLista() {

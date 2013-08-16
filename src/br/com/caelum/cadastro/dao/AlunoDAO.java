@@ -75,7 +75,6 @@ public class AlunoDAO extends SQLiteOpenHelper {
 		}
 		
 		return alunos;
-		
 	}
 	
 	public void deletar(Aluno aluno) {
@@ -88,7 +87,7 @@ public class AlunoDAO extends SQLiteOpenHelper {
 		values.put("foto", aluno.getFoto());
 		values.put("nome", aluno.getNome());
 		values.put("site", aluno.getSite());
-		values.put("site", aluno.getEndereco());
+		values.put("endereco", aluno.getEndereco());
 		values.put("telefone", aluno.getTelefone());
 		values.put("nota", aluno.getNota());
 		return values;
