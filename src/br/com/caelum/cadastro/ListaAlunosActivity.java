@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -26,11 +27,59 @@ public class ListaAlunosActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
-		setContentView(R.layout.listagem_alunos);
-		carregaLista();
-		registerForContextMenu(this.listaAlunos);
 
+		setContentView(R.layout.listagem_alunos);
+		criaLista();
+		carregaLista();
+		
+	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		carregaLista();
+	}
+
+	private void criaLista() {
+		this.listaAlunos = (ListView) findViewById(R.id.lista_alunos);
+		
+		// this.listaAlunos.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+		this.listaAlunos.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> adapter, View view,
+					int position, long id) {
+
+				Intent edicao = new Intent(ListaAlunosActivity.this, FormularioActivity.class);
+				edicao.putExtra(Extras.ALUNO_SELECIONADO, (Aluno) adapter
+						.getItemAtPosition(position));
+				
+				/*
+				Toast.makeText(ListaAlunosActivity.this,
+						"Posição selecionada: " + posicao, Toast.LENGTH_LONG)
+						.show(); */
+				
+				startActivity(edicao);
+
+			}
+
+		});
+
+		this.listaAlunos
+				.setOnItemLongClickListener(new OnItemLongClickListener() {
+
+					@Override
+					public boolean onItemLongClick(AdapterView<?> adapter,
+							View view, int position, long id) {
+
+						alunoSelecionado = (Aluno) adapter
+								.getItemAtPosition(position);
+
+						return false;
+					}
+
+				});
+
+		registerForContextMenu(this.listaAlunos);
 	}
 
 	@Override
@@ -85,7 +134,7 @@ public class ListaAlunosActivity extends Activity {
 												ListaAlunosActivity.this);
 										dao.deletar(alunoSelecionado);
 										dao.close();
-										
+
 										carregaLista();
 
 									}
@@ -102,45 +151,11 @@ public class ListaAlunosActivity extends Activity {
 		AlunoDAO alunoDAO = new AlunoDAO(this);
 
 		ArrayAdapter<Aluno> adapter = new ArrayAdapter<Aluno>(this,
-				android.R.layout.simple_list_item_1,
-				alunoDAO.getLista());
-		
-		this.listaAlunos = (ListView) findViewById(R.id.lista_alunos);
+				android.R.layout.simple_list_item_1, alunoDAO.getLista());
+
 		this.listaAlunos.setAdapter(adapter);
-		//this.listaAlunos.setChoiceMode(ListView.);
-		
-		/*
-		 * this.listaAlunos.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-		 * this.listaAlunos.setOnItemClickListener(new OnItemClickListener() {
-		 * 
-		 * @Override public void onItemClick(AdapterView<?> adapter, View view,
-		 * int posicao, long id) {
-		 * 
-		 * Toast.makeText(ListaAlunosActivity.this, "Posição selecionada: " +
-		 * posicao, Toast.LENGTH_LONG) .show();
-		 * 
-		 * }
-		 * 
-		 * });
-		 */
+		// this.listaAlunos.setChoiceMode(ListView.);
 
-		this.listaAlunos
-				.setOnItemLongClickListener(new OnItemLongClickListener() {
-
-					@Override
-					public boolean onItemLongClick(AdapterView<?> adapter,
-							View view, int position, long id) {
-
-						alunoSelecionado = (Aluno) adapter
-								.getItemAtPosition(position);
-
-						return false; 
-					}
-
-				});
-		
-		
-		
 	}
 
 }
