@@ -12,14 +12,14 @@ import br.com.caelum.cadastro.modelo.Aluno;
 
 public class AlunoDAO extends SQLiteOpenHelper {
 
-	private static String database = "CadastroCaelum";
-	private static Integer version = 1;
+	private static final String DATABASE = "CadastroCaelum";
+	private static final Integer version = 1;
 	private static final String TABLE = "ALUNO";
 	private static final String[] COLUMNS = { "id", "nome", "telefone",
 			"endereco", "site", "nota", "foto" };
 
 	public AlunoDAO(Context context) {
-		super(context, database, null, version);
+		super(context, DATABASE, null, version);
 	}
 
 	@Override
@@ -27,40 +27,33 @@ public class AlunoDAO extends SQLiteOpenHelper {
 		String sql = "CREATE TABLE " + TABLE + " (id INTEGER PRIMARY KEY, "
 				+ "nome TEXT UNIQUE NOT NULL, telefone TEXT, "
 				+ "endereco TEXT, site TEXT, nota REAL, "
-				+ "foto TEXT);";
-
+				+ "foto TEXT)";
 		db.execSQL(sql);
 	}
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		String sql = "DROP TABLE IF EXISTS" + TABLE +";";
+		String sql = "DROP TABLE IF EXISTS" + TABLE;
 		db.execSQL(sql);
 	}
 
 	public void insere(Aluno aluno) {
-		getWritableDatabase().insert(TABLE, null, alunoContentValues(aluno));
+		getWritableDatabase().insert(TABLE, null, geraValores(aluno));
 	}
 	
 	public void altera(Aluno aluno) {
-		getWritableDatabase().update(TABLE, alunoContentValues(aluno), "id=?", new String[] { aluno.getId().toString() });
+		getWritableDatabase().update(TABLE, geraValores(aluno), "id=?", new String[] { aluno.getId().toString() });
 	}
 	
 	public void salva(Aluno aluno) {
-		if (aluno.getId() == null) {
-			insere(aluno);
-		} else {
-			altera(aluno);
-		}
+		if (aluno.getId() == null) insere(aluno);
+		else altera(aluno);
 	}
 	
-	public List<Aluno> getLista() {
+	public List<Aluno> lista() {
 		Cursor cursor = getReadableDatabase().query(TABLE, COLUMNS, null, null, null, null, null);
-		
 		List<Aluno> alunos = new ArrayList<Aluno>();
-		
-		while (cursor.moveToNext()) 
-		{
+		while (cursor.moveToNext()) {
 			Aluno aluno = new Aluno();
 			aluno.setId(cursor.getLong(0));
 			aluno.setNome(cursor.getString(1));
@@ -69,11 +62,8 @@ public class AlunoDAO extends SQLiteOpenHelper {
 			aluno.setSite(cursor.getString(4));
 			aluno.setNota(cursor.getDouble(5));
 			aluno.setFoto(cursor.getString(6));
-			
 			alunos.add(aluno);
-		    
 		}
-		
 		return alunos;
 	}
 	
@@ -82,7 +72,7 @@ public class AlunoDAO extends SQLiteOpenHelper {
 		getWritableDatabase().delete(TABLE, "id=?", args);
 	}
 	
-	private ContentValues alunoContentValues(Aluno aluno) {
+	private ContentValues geraValores(Aluno aluno) {
 		ContentValues values = new ContentValues();
 		values.put("foto", aluno.getFoto());
 		values.put("nome", aluno.getNome());

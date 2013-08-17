@@ -24,7 +24,7 @@ public class FormularioActivity extends Activity {
 	}
 
 	private void defineTipoDeFormulario() {
-		aluno = (Aluno) getIntent().getSerializableExtra(Extras.ALUNO_SELECIONADO);
+		aluno = (Aluno) getIntent().getSerializableExtra(Extras.ALUNO_SELECTED);
 		if (aluno == null) { // tipo insere
 			aluno = new Aluno();
 		} else { // tipo altera

@@ -40,48 +40,6 @@ public class ListaAlunosActivity extends Activity {
 		carregaLista();
 	}
 
-	private void criaLista() {
-		this.listaAlunos = (ListView) findViewById(R.id.lista_alunos);
-		
-		// this.listaAlunos.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-		this.listaAlunos.setOnItemClickListener(new OnItemClickListener() {
-			@Override
-			public void onItemClick(AdapterView<?> adapter, View view,
-					int position, long id) {
-
-				Intent edicao = new Intent(ListaAlunosActivity.this, FormularioActivity.class);
-				edicao.putExtra(Extras.ALUNO_SELECIONADO, (Aluno) adapter
-						.getItemAtPosition(position));
-				
-				/*
-				Toast.makeText(ListaAlunosActivity.this,
-						"Posição selecionada: " + posicao, Toast.LENGTH_LONG)
-						.show(); */
-				
-				startActivity(edicao);
-
-			}
-
-		});
-
-		this.listaAlunos
-				.setOnItemLongClickListener(new OnItemLongClickListener() {
-
-					@Override
-					public boolean onItemLongClick(AdapterView<?> adapter,
-							View view, int position, long id) {
-
-						alunoSelecionado = (Aluno) adapter
-								.getItemAtPosition(position);
-
-						return false;
-					}
-
-				});
-
-		registerForContextMenu(this.listaAlunos);
-	}
-
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.menu_principal, menu);
@@ -106,8 +64,9 @@ public class ListaAlunosActivity extends Activity {
 	@Override
 	public void onCreateContextMenu(ContextMenu menu, View view,
 			ContextMenuInfo menuInfo) {
-
-		menu.add("Ligar");
+		super.onCreateContextMenu(menu, view, menuInfo);
+		
+		MenuItem ligar = menu.add("Ligar");
 		menu.add("Enviar SMS");
 		menu.add("Achar Mapa");
 		menu.add("Navegar no site");
@@ -147,11 +106,53 @@ public class ListaAlunosActivity extends Activity {
 
 	}
 
+	private void criaLista() {
+		this.listaAlunos = (ListView) findViewById(R.id.lista_alunos);
+		
+		// this.listaAlunos.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+		this.listaAlunos.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> adapter, View view,
+					int position, long id) {
+
+				Intent edicao = new Intent(ListaAlunosActivity.this, FormularioActivity.class);
+				edicao.putExtra(Extras.ALUNO_SELECTED, (Aluno) adapter
+						.getItemAtPosition(position));
+				
+				/*
+				Toast.makeText(ListaAlunosActivity.this,
+						"Posição selecionada: " + posicao, Toast.LENGTH_LONG)
+						.show(); */
+				
+				startActivity(edicao);
+
+			}
+
+		});
+
+		this.listaAlunos
+				.setOnItemLongClickListener(new OnItemLongClickListener() {
+
+					@Override
+					public boolean onItemLongClick(AdapterView<?> adapter,
+							View view, int position, long id) {
+
+						alunoSelecionado = (Aluno) adapter
+								.getItemAtPosition(position);
+
+						return false;
+					}
+
+				});
+
+		registerForContextMenu(this.listaAlunos);
+	}
+
 	private void carregaLista() {
 		AlunoDAO alunoDAO = new AlunoDAO(this);
 
 		ArrayAdapter<Aluno> adapter = new ArrayAdapter<Aluno>(this,
-				android.R.layout.simple_list_item_1, alunoDAO.getLista());
+				android.R.layout.simple_list_item_1, alunoDAO.lista());
 
 		this.listaAlunos.setAdapter(adapter);
 		// this.listaAlunos.setChoiceMode(ListView.);
