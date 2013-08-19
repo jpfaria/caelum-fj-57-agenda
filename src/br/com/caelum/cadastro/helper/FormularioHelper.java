@@ -69,7 +69,6 @@ public class FormularioHelper {
 		Bitmap imagemFoto = BitmapFactory.decodeFile(localArquivoFoto);
 		Bitmap imagemFotoReduzida = Bitmap.createScaledBitmap(imagemFoto, 100, 100, true);
 		botaoImagem.setImageBitmap(imagemFotoReduzida);
-		
 	}
 	
 }
