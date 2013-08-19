@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
@@ -67,11 +68,11 @@ public class ListaAlunosActivity extends Activity {
 		super.onCreateContextMenu(menu, view, menuInfo);
 		
 		MenuItem ligar = menu.add("Ligar");
-		menu.add("Enviar SMS");
-		menu.add("Achar Mapa");
-		menu.add("Navegar no site");
+		MenuItem sms = menu.add("Enviar SMS");
+		MenuItem achar = menu.add("Achar Mapa");
+		MenuItem navegar = menu.add("Navegar no site");
 		MenuItem deletar = menu.add("Deletar");
-		menu.add("Enviar e-mail");
+		MenuItem email = menu.add("Enviar e-mail");
 
 		deletar.setOnMenuItemClickListener(new OnMenuItemClickListener() {
 
@@ -103,6 +104,31 @@ public class ListaAlunosActivity extends Activity {
 			}
 
 		});
+		
+		Intent intentLigar = new Intent(Intent.ACTION_CALL);
+		intentLigar.setData(Uri.parse("tel:" + alunoSelecionado.getTelefone()));
+		ligar.setIntent(intentLigar);
+		
+		Intent intentSMS = new Intent(Intent.ACTION_VIEW);
+		intentSMS.setData(Uri.parse("sms:" + alunoSelecionado.getTelefone()));
+		intentSMS.putExtra("sms_body", "oi");
+		sms.setIntent(intentSMS);
+		
+		Intent intentAcharMapa = new Intent(Intent.ACTION_VIEW);
+		intentAcharMapa.setData(Uri.parse("geo:0,0?z=14&q=" + alunoSelecionado.getEndereco()));
+		achar.setIntent(intentAcharMapa);
+		
+		Intent intentNavegar = new Intent(Intent.ACTION_VIEW);
+		intentNavegar.setData(Uri.parse("http:" + alunoSelecionado.getSite()));
+		navegar.setIntent(intentNavegar);
+		
+		Intent intentEmail = new Intent(Intent.ACTION_SEND);
+		intentEmail.setType("message/rfc822");
+		intentEmail.putExtra(Intent.EXTRA_EMAIL, new String[] { "caelum@caelum.com.br" });
+		intentEmail.putExtra(Intent.EXTRA_SUBJECT, "Elogios do curso de android");
+		intentEmail.putExtra(Intent.EXTRA_TEXT, "Este curso é ótimo");
+		email.setIntent(intentEmail);
+		
 
 	}
 
