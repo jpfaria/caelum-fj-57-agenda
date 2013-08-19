@@ -59,7 +59,7 @@ public class ListaAlunosAdapter extends BaseAdapter{
 			fotoBitmap = BitmapFactory.decodeResource(activity.getResources(), R.drawable.ic_no_image);
 		}
 		
-		fotoBitmap = Bitmap.createScaledBitmap(fotoBitmap, 100, 100, true);
+		fotoBitmap = Bitmap.createScaledBitmap(fotoBitmap, 160, 160, true);
 		
 		foto.setImageBitmap(fotoBitmap);
 		

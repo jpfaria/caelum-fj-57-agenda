@@ -22,6 +22,8 @@ public class FormularioHelper {
 
 	private Aluno aluno;
 	private String localArquivoFoto;
+	
+	private FormularioActivity activity;
 
 	public FormularioHelper(FormularioActivity activity) {
 		nome = (EditText) activity.findViewById(R.id.nome);
@@ -31,6 +33,7 @@ public class FormularioHelper {
 		endereco = (EditText) activity.findViewById(R.id.endereco);
 		botaoImagem = (ImageView) activity.findViewById(R.id.foto);
 		confirmar = (Button) activity.findViewById(R.id.confirmar);
+		this.activity = activity;
 		aluno = new Aluno();
 	}
 
@@ -50,9 +53,7 @@ public class FormularioHelper {
 		site.setText(aluno.getSite());
 		nota.setProgress(Double.valueOf(aluno.getNota()).intValue());
 		endereco.setText(aluno.getEndereco());
-		if (aluno.getFoto() != null) {
-			carregaImagem(aluno.getFoto());
-		}
+		carregaImagem(aluno.getFoto());
 		this.aluno = aluno;
 	}
 	
@@ -66,9 +67,14 @@ public class FormularioHelper {
 
 	public void carregaImagem(String localArquivoFoto) {
 		this.localArquivoFoto = localArquivoFoto;
-		Bitmap imagemFoto = BitmapFactory.decodeFile(localArquivoFoto);
-		Bitmap imagemFotoReduzida = Bitmap.createScaledBitmap(imagemFoto, 100, 100, true);
-		botaoImagem.setImageBitmap(imagemFotoReduzida);
+		Bitmap fotoBitmap;
+		if (localArquivoFoto != null ) {
+			fotoBitmap = BitmapFactory.decodeFile(localArquivoFoto);
+		} else {
+			fotoBitmap = BitmapFactory.decodeResource(activity.getResources(), R.drawable.ic_no_image);
+		}
+		fotoBitmap = Bitmap.createScaledBitmap(fotoBitmap, 100, 100, true);
+		botaoImagem.setImageBitmap(fotoBitmap);
 	}
 	
 }

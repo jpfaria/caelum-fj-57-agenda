@@ -1,5 +1,7 @@
 package br.com.caelum.cadastro;
 
+import java.io.File;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -15,7 +17,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import br.com.caelum.cadastro.adapter.ListaAlunosAdapter;
 import br.com.caelum.cadastro.dao.AlunoDAO;
@@ -91,6 +92,11 @@ public class ListaAlunosActivity extends Activity {
 									public void onClick(DialogInterface dialog,
 											int which) {
 
+										if (alunoSelecionado.getFoto() != null) {
+											File file = new File(alunoSelecionado.getFoto());
+											file.delete();
+										}
+										
 										AlunoDAO dao = new AlunoDAO(
 												ListaAlunosActivity.this);
 										dao.deletar(alunoSelecionado);
