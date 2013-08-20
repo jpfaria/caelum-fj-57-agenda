@@ -73,7 +73,7 @@ public class FormularioHelper {
 		} else {
 			fotoBitmap = BitmapFactory.decodeResource(activity.getResources(), R.drawable.ic_no_image);
 		}
-		fotoBitmap = Bitmap.createScaledBitmap(fotoBitmap, 160, 160, true);
+		fotoBitmap = Bitmap.createScaledBitmap(fotoBitmap, 350, 350, true);
 		botaoImagem.setImageBitmap(fotoBitmap);
 	}
 	
