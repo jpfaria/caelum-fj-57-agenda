@@ -72,6 +72,23 @@ public class AlunoDAO extends SQLiteOpenHelper {
 		getWritableDatabase().delete(TABLE, "id=?", args);
 	}
 	
+	public boolean isAluno(String telefone) {
+		
+		StringBuilder builder = new StringBuilder();  
+		builder.append("SELECT telefone from");  
+		builder.append(TABLE);  
+		builder.append("WHERE telefone = ");
+		builder.append(telefone);
+		
+		Cursor rawQuery = getReadableDatabase().rawQuery(builder.toString(),null);
+		
+		int total = rawQuery.getCount();
+		rawQuery.close();
+		
+		return total > 0;
+		
+	}
+	
 	private ContentValues geraValores(Aluno aluno) {
 		ContentValues values = new ContentValues();
 		values.put("foto", aluno.getFoto());
@@ -81,6 +98,6 @@ public class AlunoDAO extends SQLiteOpenHelper {
 		values.put("telefone", aluno.getTelefone());
 		values.put("nota", aluno.getNota());
 		return values;
-	}
+	} 
 
 }
