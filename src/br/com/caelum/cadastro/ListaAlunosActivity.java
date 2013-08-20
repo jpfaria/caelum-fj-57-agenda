@@ -1,7 +1,10 @@
 package br.com.caelum.cadastro;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
+
+import org.apache.http.client.ClientProtocolException;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -16,14 +19,15 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
+import android.widget.Toast;
 import br.com.caelum.cadastro.adapter.ListaAlunosAdapter;
 import br.com.caelum.cadastro.converter.AlunoConverter;
 import br.com.caelum.cadastro.dao.AlunoDAO;
 import br.com.caelum.cadastro.modelo.Aluno;
+import br.com.caelum.cadastro.support.WebClient;
 
 public class ListaAlunosActivity extends Activity {
 
@@ -69,9 +73,18 @@ public class ListaAlunosActivity extends Activity {
 				dao.close();
 				
 				String json = new AlunoConverter().toJson(alunos);
-				
-				Toast.makeText(this, json, Toast.LENGTH_LONG).show();
+				//Toast.makeText(this, json, Toast.LENGTH_LONG).show();
 	
+				WebClient client = new WebClient("http://www.caelum.com.br/mobile");
+				String resposta;
+				
+				try {
+					resposta = client.post(json);
+					Toast.makeText(this, resposta, Toast.LENGTH_LONG).show();
+				} catch (Exception e) {
+					Toast.makeText(this, "Sem conexão", Toast.LENGTH_LONG).show();
+				}
+				
 				return false;
 	
 			default:
