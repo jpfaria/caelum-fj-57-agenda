@@ -2,6 +2,6 @@
 
 <resources>
     <color name="borda_imagem">#BABABA</color>
-    <color name="linha_par">#33FFFF</color>
-    <color name="linha_impar">#96FAFA</color>
+    <color name="linha_par">#FFFFFF</color>
+    <color name="linha_impar">#EDE1B9</color>
 </resources>
