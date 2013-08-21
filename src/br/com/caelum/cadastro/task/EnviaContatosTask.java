@@ -36,8 +36,7 @@ public class EnviaContatosTask extends AsyncTask<Object, Object, String> {
 		dao.close();
 
 		String json = new AlunoConverter().toJson(alunos);
-		// Toast.makeText(this, json, Toast.LENGTH_LONG).show();
-
+		
 		WebClient client = new WebClient(endereco);
 		
 		try {
