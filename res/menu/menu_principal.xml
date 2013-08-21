@@ -13,6 +13,12 @@
         android:title="@string/menu_principal_mapa"/>
     
     <item
+        android:id="@+id/menu_principal_info"
+        android:showAsAction="always"
+        android:icon="@drawable/ic_action_location_2"
+        android:title="@string/menu_principal_info"/>
+    
+    <item
         android:id="@+id/menu_principal_opcoes"
         android:showAsAction="always"
         android:icon="@drawable/ic_opcoes"

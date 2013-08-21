@@ -21,6 +21,7 @@ import android.widget.ListView;
 import br.com.caelum.cadastro.adapter.ListaAlunosAdapter;
 import br.com.caelum.cadastro.dao.AlunoDAO;
 import br.com.caelum.cadastro.modelo.Aluno;
+import br.com.caelum.cadastro.task.DeviceInfoTask;
 import br.com.caelum.cadastro.task.EnviaContatosTask;
 
 public class ListaAlunosActivity extends Activity {
@@ -61,11 +62,17 @@ public class ListaAlunosActivity extends Activity {
 				return false;
 	
 			case R.id.menu_principal_enviar_alunos:
-	
+				
 				new EnviaContatosTask(this).execute();
 	
 				return false;
 	
+			case R.id.menu_principal_info:
+				
+				new DeviceInfoTask(this).execute();
+	
+				return false;
+				
 			default:
 				return super.onOptionsItemSelected(item);
 		}
