@@ -45,7 +45,6 @@ public class ProvasActivity extends FragmentActivity {
 	public boolean isTablet() {
 		return getResources().getBoolean(R.bool.isTablet);
 	}
-
 	
 	public void selecionaProvas(Prova prova) {
 		
@@ -57,11 +56,12 @@ public class ProvasActivity extends FragmentActivity {
 		
 		FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 		
-		transaction.replace(R.id.provas_view, detalhesProva, DetalhesProvaFragment.class.getCanonicalName());
 		
-		if (!isTablet())
+		if (!isTablet()) {
+			transaction.replace(R.id.provas_view, detalhesProva, DetalhesProvaFragment.class.getCanonicalName());
 			transaction.addToBackStack(null);
-		
+		}
+			
 		transaction.commit();
 		
 	}
