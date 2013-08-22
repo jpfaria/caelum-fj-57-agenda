@@ -1,10 +1,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="50dp"
-    tools:context=".FormularioActivity" >
+    android:layout_margin="50dp" >
 
     <ImageView 
         android:id="@+id/foto"
