@@ -20,7 +20,6 @@
     <string name="menu_principal_enviar_alunos">Sincronizar</string>
     <string name="menu_principal_receber_provas">Baixar Provas</string>
     <string name="menu_principal_preferencias">Preferências</string>
-    <string name="menu_principal_marcelino">Marcelino</string>
     
     
 </resources>

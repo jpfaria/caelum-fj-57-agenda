@@ -56,7 +56,6 @@ public final class R {
         public static final int menu_principal_enviar_alunos=0x7f0a000e;
         public static final int menu_principal_info=0x7f0a000c;
         public static final int menu_principal_mapa=0x7f0a000b;
-        public static final int menu_principal_marcelino=0x7f0a0011;
         public static final int menu_principal_novo=0x7f0a000a;
         public static final int menu_principal_opcoes=0x7f0a000d;
         public static final int menu_principal_preferencias=0x7f0a0010;
@@ -100,7 +99,6 @@ public final class R {
         public static final int menu_principal_enviar_alunos=0x7f06000f;
         public static final int menu_principal_info=0x7f06000c;
         public static final int menu_principal_mapa=0x7f06000d;
-        public static final int menu_principal_marcelino=0x7f060012;
         public static final int menu_principal_novo=0x7f06000b;
         public static final int menu_principal_opcoes=0x7f06000e;
         public static final int menu_principal_preferencias=0x7f060011;
