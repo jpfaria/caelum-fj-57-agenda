@@ -3,11 +3,14 @@ package br.com.caelum.cadastro.task;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.telephony.TelephonyManager;
 import android.widget.Toast;
 
 public class DeviceInfoTask extends AsyncTask<Object, Object, String> {
 
 	private final Context context;
+	
+	TelephonyManager        Tel;
 	
 	private ProgressDialog progress;
 	
