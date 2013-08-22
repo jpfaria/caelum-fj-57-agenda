@@ -46,20 +46,23 @@ public class ListaAlunosActivity extends Activity {
 		setContentView(R.layout.lista_alunos);
 		criaLista();
 		carregaLista();
-		registraListener();
-
-	}
-
-	private void registraListener() {
 		myListener = new MyPhoneStateListener();
-		tel = ( TelephonyManager )getSystemService(Context.TELEPHONY_SERVICE);
-		tel.listen(myListener ,PhoneStateListener.LISTEN_SIGNAL_STRENGTHS);
+		tel = ( TelephonyManager ) getSystemService(Context.TELEPHONY_SERVICE);
+		escutaSinalDoTelefone();
 	}
+
+	@Override
+    protected void onPause()
+    {
+      super.onPause();
+      tel.listen(myListener, PhoneStateListener.LISTEN_NONE);
+    }
 
 	@Override
 	protected void onResume() {
 		super.onResume();
 		carregaLista();
+		escutaSinalDoTelefone();
 	}
 
 	@Override
@@ -177,6 +180,10 @@ public class ListaAlunosActivity extends Activity {
 		intentEmail.putExtra(Intent.EXTRA_TEXT, "Este curso é ótimo");
 		email.setIntent(intentEmail);
 
+	}
+	
+	private void escutaSinalDoTelefone() {
+		tel.listen(myListener , PhoneStateListener.LISTEN_SIGNAL_STRENGTHS);
 	}
 
 	private void criaLista() {
