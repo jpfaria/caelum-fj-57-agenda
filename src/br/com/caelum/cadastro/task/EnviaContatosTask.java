@@ -8,7 +8,7 @@ import android.os.AsyncTask;
 import android.widget.Toast;
 import br.com.caelum.cadastro.converter.AlunoConverter;
 import br.com.caelum.cadastro.dao.AlunoDAO;
-import br.com.caelum.cadastro.modelo.Aluno;
+import br.com.caelum.cadastro.model.Aluno;
 import br.com.caelum.cadastro.support.WebClient;
 
 public class EnviaContatosTask extends AsyncTask<Object, Object, String> {

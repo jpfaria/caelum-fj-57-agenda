@@ -8,7 +8,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import br.com.caelum.cadastro.modelo.Aluno;
+import br.com.caelum.cadastro.model.Aluno;
 
 public class AlunoDAO extends SQLiteOpenHelper {
 

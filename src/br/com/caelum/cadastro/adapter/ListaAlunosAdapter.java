@@ -11,7 +11,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import br.com.caelum.cadastro.R;
-import br.com.caelum.cadastro.modelo.Aluno;
+import br.com.caelum.cadastro.model.Aluno;
 
 public class ListaAlunosAdapter extends BaseAdapter{
 

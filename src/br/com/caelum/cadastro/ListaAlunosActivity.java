@@ -1,6 +1,7 @@
 package br.com.caelum.cadastro;
 
 import com.crashlytics.android.Crashlytics;
+
 import java.io.File;
 
 import android.app.Activity;
@@ -26,7 +27,7 @@ import android.widget.Toast;
 import br.com.caelum.cadastro.adapter.ListaAlunosAdapter;
 import br.com.caelum.cadastro.dao.AlunoDAO;
 import br.com.caelum.cadastro.listener.MyPhoneStateListener;
-import br.com.caelum.cadastro.modelo.Aluno;
+import br.com.caelum.cadastro.model.Aluno;
 import br.com.caelum.cadastro.task.EnviaContatosTask;
 
 public class ListaAlunosActivity extends Activity {
@@ -42,7 +43,7 @@ public class ListaAlunosActivity extends Activity {
 		super.onCreate(savedInstanceState);
 
 		Crashlytics.start(this);
-		setContentView(R.layout.listagem_alunos);
+		setContentView(R.layout.lista_alunos);
 		criaLista();
 		carregaLista();
 		registraListener();
@@ -69,18 +70,17 @@ public class ListaAlunosActivity extends Activity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
+		
 		switch (item.getItemId()) {
 			case R.id.menu_principal_novo:
 	
 				Intent intent = new Intent(this, FormularioActivity.class);
 				startActivity(intent);
-	
 				return false;
 	
 			case R.id.menu_principal_enviar_alunos:
 				
 				new EnviaContatosTask(this).execute();
-	
 				return false;
 	
 			case R.id.menu_principal_info:
@@ -88,14 +88,19 @@ public class ListaAlunosActivity extends Activity {
 				Toast.makeText(ListaAlunosActivity.this,
 						 "Sinal: " + myListener.getSignalStrength(), Toast.LENGTH_LONG)
 						 .show();
-	
 				return false;
+
 			case R.id.menu_principal_marcelino:
-				
+							
 				Toast.makeText(ListaAlunosActivity.this,
 						 "Alo marcelino", Toast.LENGTH_LONG)
 						 .show();
-	
+				return false;
+							
+			case R.id.menu_principal_receber_provas:
+				
+				Intent provas = new Intent(this, ProvasActivity.class);
+				startActivity(provas);
 				return false;
 				
 			default:

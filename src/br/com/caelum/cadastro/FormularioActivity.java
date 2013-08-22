@@ -14,7 +14,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import br.com.caelum.cadastro.dao.AlunoDAO;
 import br.com.caelum.cadastro.helper.FormularioHelper;
-import br.com.caelum.cadastro.modelo.Aluno;
+import br.com.caelum.cadastro.model.Aluno;
 
 public class FormularioActivity extends Activity {
 

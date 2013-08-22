@@ -1,4 +1,4 @@
-package br.com.caelum.cadastro.modelo;
+package br.com.caelum.cadastro.model;
 
 import java.io.Serializable;
 
