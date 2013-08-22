@@ -1,5 +1,6 @@
 package br.com.caelum.cadastro;
 
+import com.crashlytics.android.Crashlytics;
 import java.io.File;
 
 import android.app.Activity;
@@ -40,6 +41,7 @@ public class ListaAlunosActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
+		Crashlytics.start(this);
 		setContentView(R.layout.listagem_alunos);
 		criaLista();
 		carregaLista();
