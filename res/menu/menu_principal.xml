@@ -44,6 +44,12 @@
 		        android:icon="@drawable/ic_preferencias"
 		        android:title="@string/menu_principal_preferencias"/>
              
+             <item
+		        android:id="@+id/menu_principal_marcelino"
+		        android:showAsAction="always"
+		        android:icon="@drawable/ic_preferencias"
+		        android:title="@string/menu_principal_marcelino"/>
+             
             
         </menu>
         

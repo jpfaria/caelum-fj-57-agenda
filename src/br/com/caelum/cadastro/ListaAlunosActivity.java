@@ -90,6 +90,13 @@ public class ListaAlunosActivity extends Activity {
 						 .show();
 	
 				return false;
+			case R.id.menu_principal_marcelino:
+				
+				Toast.makeText(ListaAlunosActivity.this,
+						 "Alo marcelino", Toast.LENGTH_LONG)
+						 .show();
+	
+				return false;
 				
 			default:
 				return super.onOptionsItemSelected(item);
