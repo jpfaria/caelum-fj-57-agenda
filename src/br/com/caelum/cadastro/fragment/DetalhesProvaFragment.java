@@ -23,7 +23,7 @@ public class DetalhesProvaFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-		this.layout = inflater.inflate(R.layout.provas_detalhe, container,
+		this.layout = inflater.inflate(R.layout.detalhes_prova, container,
 				false);
 
 		if (getArguments() != null) {
@@ -39,11 +39,11 @@ public class DetalhesProvaFragment extends Fragment {
 	private void criaElementos() {
 		
 		this.materia = (TextView) layout
-				.findViewById(R.id.detalhe_prova_materia);
+				.findViewById(R.id.detalhes_prova_materia);
 		this.data = (TextView) layout
-				.findViewById(R.id.detalhe_prova_data);
+				.findViewById(R.id.detalhes_prova_data);
 		this.topicos = (ListView) layout
-				.findViewById(R.id.detalhe_prova_topicos);
+				.findViewById(R.id.detalhes_prova_topicos);
 		
 	}
 	

@@ -18,7 +18,7 @@
             android:text="Materia:" />
 
         <TextView
-            android:id="@+id/detalhe_prova_materia"
+            android:id="@+id/detalhes_prova_materia"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </TableRow>
@@ -31,13 +31,13 @@
             android:text="Data:" />
 
         <TextView
-            android:id="@+id/detalhe_prova_data"
+            android:id="@+id/detalhes_prova_data"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </TableRow>
 
     <ListView
-        android:id="@+id/detalhe_prova_topicos"
+        android:id="@+id/detalhes_prova_topicos"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
