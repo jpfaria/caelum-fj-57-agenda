@@ -23,7 +23,7 @@ public class ListaProvasFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View layoutProvas = inflater.inflate(R.layout.provas, container,
+		View layoutProvas = inflater.inflate(R.layout.lista_provas, container,
 				false);
 
 		listViewProvas = (ListView) layoutProvas

@@ -47,11 +47,17 @@ public class ProvasActivity extends FragmentActivity {
 		
 		FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 		
-		transaction.replace(R.id.provas_detalhe_frame, detalhesProva, DetalhesProvaFragment.class.getCanonicalName());
+		int frame;
 		
 		if (!isTablet()) {
 			transaction.addToBackStack(null);
+			frame = R.id.provas_lista_frame;
+		} else {
+			frame = R.id.provas_detalhe_frame;
 		}
+		
+		transaction.replace(frame, detalhesProva, DetalhesProvaFragment.class.getCanonicalName());
+		
 			
 		transaction.commit();
 		
