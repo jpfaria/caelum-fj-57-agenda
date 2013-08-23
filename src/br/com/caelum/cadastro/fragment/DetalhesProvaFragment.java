@@ -14,25 +14,42 @@ import br.com.caelum.cadastro.model.Prova;
 public class DetalhesProvaFragment extends Fragment {
 
 	private Prova prova;
-
+	private View layout;
+	private TextView materia;
+	private TextView data;
+	private ListView topicos;
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-		View layout = inflater.inflate(R.layout.provas_detalhe, container,
+		this.layout = inflater.inflate(R.layout.provas_detalhe, container,
 				false);
 
 		if (getArguments() != null) {
 			this.prova = (Prova) getArguments().getSerializable("prova");
 		}
 
+		criaElementos();
+		populaElementos();
+		
+		return this.layout;
+	}
+	
+	private void criaElementos() {
+		
+		this.materia = (TextView) layout
+				.findViewById(R.id.detalhe_prova_materia);
+		this.data = (TextView) layout
+				.findViewById(R.id.detalhe_prova_data);
+		this.topicos = (ListView) layout
+				.findViewById(R.id.detalhe_prova_topicos);
+		
+	}
+	
+	private void populaElementos() {
+		
 		if (this.prova != null) {
-			TextView materia = (TextView) layout
-					.findViewById(R.id.detalhe_prova_materia);
-			TextView data = (TextView) layout
-					.findViewById(R.id.detalhe_prova_data);
-			ListView topicos = (ListView) layout
-					.findViewById(R.id.detalhe_prova_topicos);
 
 			materia.setText(this.prova.getMateria());
 			data.setText(this.prova.getData());
@@ -45,7 +62,7 @@ public class DetalhesProvaFragment extends Fragment {
 			topicos.setAdapter(adapter);
 
 		}
-
-		return layout;
+		
 	}
+	
 }

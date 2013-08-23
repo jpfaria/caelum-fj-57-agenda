@@ -12,7 +12,6 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 import br.com.caelum.cadastro.ProvasActivity;
 import br.com.caelum.cadastro.R;
 import br.com.caelum.cadastro.model.Prova;
