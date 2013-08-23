@@ -37,6 +37,10 @@
             android:name="br.com.caelum.cadastro.ProvasActivity"
             android:label="@string/app_name" >
         </activity>
+        <activity
+            android:name="br.com.caelum.cadastro.GaleriaActivity"
+            android:label="@string/app_name" >
+        </activity>
         
         <receiver android:name="br.com.caelum.cadastro.receiver.SMSReceiver" android:enabled="true">
             <intent-filter>

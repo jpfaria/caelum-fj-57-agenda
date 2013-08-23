@@ -3,11 +3,14 @@ package br.com.caelum.cadastro.adapter;
 import java.util.List;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import br.com.caelum.cadastro.R;
 import br.com.caelum.cadastro.model.Aluno;
 
 public class GaleriaAlunosAdapter extends PagerAdapter{
@@ -42,9 +45,14 @@ public class GaleriaAlunosAdapter extends PagerAdapter{
 		
 		if (aluno.getFoto() != null) {
 			
+			Bitmap imagem = BitmapFactory.decodeFile(aluno.getFoto());
+			foto.setImageBitmap(Bitmap.createScaledBitmap(imagem, 200, 200, true));
+			
 		} else {
-			foto.setImageResource(resId)
+			foto.setImageResource(R.drawable.ic_no_image);
 		}
+		
+		((ViewPager) pager).addView(foto, 0);
 		
 		return foto;
 	}

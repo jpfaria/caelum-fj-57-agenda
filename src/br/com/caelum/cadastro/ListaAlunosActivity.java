@@ -240,6 +240,8 @@ public class ListaAlunosActivity extends Activity {
 
 		ListaAlunosAdapter adapter = new ListaAlunosAdapter(this,
 				alunoDAO.lista());
+		
+		alunoDAO.close();
 
 		this.listaAlunos.setAdapter(adapter);
 		// this.listaAlunos.setChoiceMode(ListView.);
