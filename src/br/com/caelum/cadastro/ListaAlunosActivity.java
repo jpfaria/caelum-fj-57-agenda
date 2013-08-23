@@ -1,18 +1,13 @@
 package br.com.caelum.cadastro;
 
-import com.crashlytics.android.Crashlytics;
-
 import java.io.File;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.telephony.PhoneStateListener;
-import android.telephony.TelephonyManager;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
@@ -23,20 +18,22 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
-import android.widget.Toast;
 import br.com.caelum.cadastro.adapter.ListaAlunosAdapter;
 import br.com.caelum.cadastro.dao.AlunoDAO;
-import br.com.caelum.cadastro.listener.MyPhoneStateListener;
 import br.com.caelum.cadastro.model.Aluno;
 import br.com.caelum.cadastro.task.EnviaContatosTask;
+
+import com.crashlytics.android.Crashlytics;
 
 public class ListaAlunosActivity extends Activity {
 
 	private ListView listaAlunos;
 	private Aluno alunoSelecionado;
 	
+	/*
 	private TelephonyManager tel;
 	private MyPhoneStateListener myListener;
+	*/
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,23 +43,26 @@ public class ListaAlunosActivity extends Activity {
 		setContentView(R.layout.alunos);
 		criaLista();
 		carregaLista();
+		
+		/*
 		myListener = new MyPhoneStateListener();
 		tel = ( TelephonyManager ) getSystemService(Context.TELEPHONY_SERVICE);
 		escutaSinalDoTelefone();
+		*/
 	}
 
 	@Override
     protected void onPause()
     {
       super.onPause();
-      tel.listen(myListener, PhoneStateListener.LISTEN_NONE);
+      //tel.listen(myListener, PhoneStateListener.LISTEN_NONE);
     }
 
 	@Override
 	protected void onResume() {
 		super.onResume();
 		carregaLista();
-		escutaSinalDoTelefone();
+		//escutaSinalDoTelefone();
 	}
 
 	@Override
@@ -86,12 +86,14 @@ public class ListaAlunosActivity extends Activity {
 				new EnviaContatosTask(this).execute();
 				return false;
 	
+			/*	
 			case R.id.menu_principal_info:
 				
 				Toast.makeText(ListaAlunosActivity.this,
 						 "Sinal: " + myListener.getSignalStrength(), Toast.LENGTH_LONG)
 						 .show();
-				return false;
+				return false; 
+			*/
 
 			case R.id.menu_principal_receber_provas:
 				
@@ -182,12 +184,14 @@ public class ListaAlunosActivity extends Activity {
 
 	}
 	
+	/*
 	private void escutaSinalDoTelefone() {
 		tel.listen(myListener , PhoneStateListener.LISTEN_SIGNAL_STRENGTHS);
 	}
+	*/
 
 	private void criaLista() {
-		this.listaAlunos = (ListView) findViewById(R.id.lista_alunos);
+		this.listaAlunos = (ListView) findViewById(R.id.alunos_lista);
 
 		// this.listaAlunos.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 		this.listaAlunos.setOnItemClickListener(new OnItemClickListener() {

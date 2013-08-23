@@ -17,13 +17,13 @@ public class ProvasActivity extends FragmentActivity {
 		FragmentTransaction transaction = getSupportFragmentManager()
 				.beginTransaction();
 
-		transaction.replace(R.id.provas_lista,
+		transaction.replace(R.id.provas_lista_frame,
 				new ListaProvasFragment(),
 				ListaProvasFragment.class.getCanonicalName());
 		
 		if (isTablet()) {
 
-			transaction.replace(R.id.provas_detalhe,
+			transaction.replace(R.id.provas_detalhe_frame,
 					new DetalhesProvaFragment(),
 					DetalhesProvaFragment.class.getCanonicalName());
 
@@ -47,7 +47,7 @@ public class ProvasActivity extends FragmentActivity {
 		
 		FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 		
-		transaction.replace(R.id.provas_detalhe, detalhesProva, DetalhesProvaFragment.class.getCanonicalName());
+		transaction.replace(R.id.provas_detalhe_frame, detalhesProva, DetalhesProvaFragment.class.getCanonicalName());
 		
 		if (!isTablet()) {
 			transaction.addToBackStack(null);

@@ -6,13 +6,13 @@
     android:orientation="horizontal" >
 
     <FrameLayout
-        android:id="@+id/provas_lista"
+        android:id="@+id/provas_lista_frame"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1" />
 
     <FrameLayout
-        android:id="@+id/provas_detalhe"
+        android:id="@+id/provas_detalhe_frame"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_margin="20dp"
