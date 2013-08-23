@@ -1,11 +1,11 @@
 package br.com.caelum.cadastro;
 
-import br.com.caelum.cadastro.fragment.DetalhesProvaFragment;
-import br.com.caelum.cadastro.fragment.ListaProvasFragment;
-import br.com.caelum.cadastro.model.Prova;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
+import br.com.caelum.cadastro.fragment.DetalhesProvaFragment;
+import br.com.caelum.cadastro.fragment.ListaProvasFragment;
+import br.com.caelum.cadastro.model.Prova;
 
 public class ProvasActivity extends FragmentActivity {
 
@@ -17,16 +17,15 @@ public class ProvasActivity extends FragmentActivity {
 		FragmentTransaction transaction = getSupportFragmentManager()
 				.beginTransaction();
 
-		transaction.replace(R.id.provas_detalhe,
-				new DetalhesProvaFragment(),
-				DetalhesProvaFragment.class.getCanonicalName());
+		transaction.replace(R.id.provas_lista,
+				new ListaProvasFragment(),
+				ListaProvasFragment.class.getCanonicalName());
 		
 		if (isTablet()) {
 
-			transaction.replace(R.id.provas_lista,
-					new ListaProvasFragment(),
-					ListaProvasFragment.class.getCanonicalName());
-			
+			transaction.replace(R.id.provas_detalhe,
+					new DetalhesProvaFragment(),
+					DetalhesProvaFragment.class.getCanonicalName());
 
 		}
 

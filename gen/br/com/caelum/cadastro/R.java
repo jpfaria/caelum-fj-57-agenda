@@ -70,8 +70,8 @@ public final class R {
         public static final int menu_principal_receber_provas=0x7f0b0014;
         public static final int nome=0x7f0b0001;
         public static final int nota=0x7f0b0005;
-        public static final int provas_detalhe=0x7f0b000a;
-        public static final int provas_lista=0x7f0b000b;
+        public static final int provas_detalhe=0x7f0b000b;
+        public static final int provas_lista=0x7f0b000a;
         public static final int site=0x7f0b0002;
         public static final int telefone=0x7f0b0004;
     }
