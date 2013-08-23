@@ -29,7 +29,7 @@ public class FormularioActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.formulario);
-		criaFormulario();
+		criaFormulario(); 
 	}
 	
 	@Override

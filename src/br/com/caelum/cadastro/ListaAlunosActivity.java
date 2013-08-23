@@ -43,7 +43,7 @@ public class ListaAlunosActivity extends Activity {
 		super.onCreate(savedInstanceState);
 
 		Crashlytics.start(this);
-		setContentView(R.layout.lista_alunos);
+		setContentView(R.layout.alunos);
 		criaLista();
 		carregaLista();
 		myListener = new MyPhoneStateListener();
