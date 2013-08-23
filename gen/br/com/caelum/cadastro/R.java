@@ -58,8 +58,9 @@ public final class R {
         public static final int detalhe_prova_topicos=0x7f0b000e;
         public static final int endereco=0x7f0b0003;
         public static final int foto=0x7f0b0000;
-        public static final int lista_alunos=0x7f0b0007;
-        public static final int lista_provas=0x7f0b0008;
+        public static final int gallery=0x7f0b0007;
+        public static final int lista_alunos=0x7f0b0008;
+        public static final int lista_provas=0x7f0b0009;
         public static final int menu_principal_enviar_alunos=0x7f0b0013;
         public static final int menu_principal_info=0x7f0b0011;
         public static final int menu_principal_mapa=0x7f0b0010;
@@ -69,19 +70,19 @@ public final class R {
         public static final int menu_principal_receber_provas=0x7f0b0014;
         public static final int nome=0x7f0b0001;
         public static final int nota=0x7f0b0005;
-        public static final int provas_detalhe=0x7f0b000b;
-        public static final int provas_lista=0x7f0b000a;
-        public static final int provas_view=0x7f0b0009;
+        public static final int provas_detalhe=0x7f0b000a;
+        public static final int provas_lista=0x7f0b000b;
         public static final int site=0x7f0b0002;
         public static final int telefone=0x7f0b0004;
     }
     public static final class layout {
         public static final int formulario=0x7f030000;
-        public static final int item=0x7f030001;
-        public static final int lista_alunos=0x7f030002;
-        public static final int lista_provas=0x7f030003;
-        public static final int provas=0x7f030004;
-        public static final int provas_detalhe=0x7f030005;
+        public static final int galeria=0x7f030001;
+        public static final int item=0x7f030002;
+        public static final int lista_alunos=0x7f030003;
+        public static final int lista_provas=0x7f030004;
+        public static final int provas=0x7f030005;
+        public static final int provas_detalhe=0x7f030006;
     }
     public static final class menu {
         public static final int menu_principal=0x7f0a0000;

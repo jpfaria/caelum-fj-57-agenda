@@ -14,31 +14,23 @@ public class ProvasActivity extends FragmentActivity {
 		super.onCreate(bundle);
 		setContentView(R.layout.provas);
 
-		if (bundle == null) {
+		FragmentTransaction transaction = getSupportFragmentManager()
+				.beginTransaction();
 
-			FragmentTransaction transaction = getSupportFragmentManager()
-					.beginTransaction();
+		transaction.replace(R.id.provas_detalhe,
+				new DetalhesProvaFragment(),
+				DetalhesProvaFragment.class.getCanonicalName());
+		
+		if (isTablet()) {
 
-			if (isTablet()) {
-
-				transaction.replace(R.id.provas_lista,
-						new ListaProvasFragment(),
-						ListaProvasFragment.class.getCanonicalName());
-				transaction.replace(R.id.provas_view,
-						new DetalhesProvaFragment(),
-						DetalhesProvaFragment.class.getCanonicalName());
-
-			} else {
-
-				transaction.replace(R.id.provas_view,
-						new ListaProvasFragment(),
-						ListaProvasFragment.class.getCanonicalName());
-
-			}
-
-			transaction.commit();
+			transaction.replace(R.id.provas_lista,
+					new ListaProvasFragment(),
+					ListaProvasFragment.class.getCanonicalName());
+			
 
 		}
+
+		transaction.commit();
 
 	}
 
@@ -56,9 +48,9 @@ public class ProvasActivity extends FragmentActivity {
 		
 		FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 		
+		transaction.replace(R.id.provas_detalhe, detalhesProva, DetalhesProvaFragment.class.getCanonicalName());
 		
 		if (!isTablet()) {
-			transaction.replace(R.id.provas_view, detalhesProva, DetalhesProvaFragment.class.getCanonicalName());
 			transaction.addToBackStack(null);
 		}
 			
